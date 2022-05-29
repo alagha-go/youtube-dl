@@ -22,6 +22,9 @@ type Client struct {
 
 	// playerCache caches the JavaScript code of a player response
 	playerCache playerCache
+
+	// headers need to be added to the player
+	Headers []Header
 }
 
 // GetVideo fetches video metadata

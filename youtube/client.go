@@ -234,6 +234,7 @@ func (c *Client) GetStreamContext(ctx context.Context, video *Video, format *For
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	SetHeaders(req, c)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -360,6 +361,7 @@ func (c *Client) httpDo(req *http.Request) (*http.Response, error) {
 // httpGet does a HTTP GET request, checks the response to be a 200 OK and returns it
 func (c *Client) httpGet(ctx context.Context, url string) (*http.Response, error) {
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	SetHeaders(req, c)
 	if err != nil {
 		return nil, err
 	}
@@ -395,6 +397,7 @@ func (c *Client) httpPost(ctx context.Context, url string, body interface{}) (*h
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(data))
+	SetHeaders(req, c)
 	if err != nil {
 		return nil, err
 	}

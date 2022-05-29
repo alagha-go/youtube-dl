@@ -8,7 +8,7 @@ type Header struct {
 	Value		string
 }
 
-func SetHeaders(req *http.Request, client Client) {
+func SetHeaders(req *http.Request, client *Client) {
 	for _, header := range client.Headers {
 		req.Header.Set(header.Key, header.Value)
 	}
